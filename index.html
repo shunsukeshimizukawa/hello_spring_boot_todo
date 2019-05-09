@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/hack.css">
+    <title>忘備録</title>
+</head>
+
+<body class="ht-fontpage-body">
+    <div class="container">
+        <div class="content">
+            <h1>SpringBoot基礎の忘備録</h1>
+            <article>
+                <h2>前提</h2>
+                <p>
+                    とにかくサーバーを立ち上げる事を目的に
+                    <a href="https://www.ibm.com/developerworks/jp/java/library/j-spring-boot-basics-perry/">
+                        SpringBootの基礎
+                    </a>の"Hello, World!"の手順で詰まる所を記述していきます。
+                </p>
+            </article>
+
+            <article>
+                <h2>やり方</h2>
+                <div>
+                    <h3>STSの起動</h3>
+                    <p>STS(Eclipse)の起動の際にワークスペースを確認する。デフォルトは以下の通り</p>
+                    <pre>C:\Users\ユーザ名\Documents\workspace-sts-3.9.8.RELEASE</pre>
+                </div>
+                <div>
+                    <h3>Maven プロジェクトを作成する</h3>
+                    maven-archetype-quickstart(勝手にフォルダを生成してくれる)を指定後
+                    <ul>
+                        <li>Group Id</li>
+                        <li>Artifact Id</li>
+                        <li>Version</li>
+                        <li>Package</li>
+                    </ul>
+                    を入力(Versionの初期値は0.0.1になっているので注意)
+                </div>
+                <div>
+                    <h3>※サンプルソースを入手する。</h3>
+                    <p>
+                        Hello, World冒頭で紹介されているサンプルコードを
+                        githubから入手します。
+                        <a href="https://github.com/makotogo/HelloSpringBoot">こちら</a>
+                    </p>
+                    <img src="img/dl_src.jpg" alt="" srcset="">
+                    <p>
+                        ダウンロードしたら解凍して
+                    </p>
+                    <img src="img/file_drop.jpg" alt="" srcset="">
+                    <p>
+                        自分のワークスペースのsrcフォルダを解凍したsrcフォルダで上書きして下さい。
+                        (※srcには表示するページのデータ等が入ってます。)
+                    </p>
+                </div>
+                <div>
+                    <h3>POM を作成する</h3>
+                    <p>
+                        指示に従い
+                        <ul>
+                            <li>parent</li>
+                            <li>dependency</li>
+                            <li>plugins</li>
+                        </ul>
+                        を追加する。
+                        この際元々生成されている"dependency"の
+                        中身は消さずに残しておく。
+                        "parent を失くす"の項目は無視して問題ありません。
+                        ※dependenciesは以下の様になる。
+                        <pre>
+                            <code class="prettyprint">
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;junit&lt;/groupId&gt;
+        &lt;artifactId&gt;junit&lt;/artifactId&gt;
+        &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+                            </code>
+                        </pre>
+
+                    </p>
+
+                </div>
+                <div>
+                    <h3>実行可能 JAR をビルドする</h3>
+                    <p>
+                        PCが実行できる様にビルドしてjarファイルを生成します。
+                        ここの内容は指示通りです。
+                        コマンド・ラインからビルドするは無視して構いません。
+                    </p>
+                </div>
+                <div>
+                    <h3>実行可能 JAR を実行する</h3>
+                    <p>
+                        以前TomcatをStartしている場合はStopしておきます。
+                        エクスプローラーでワークスペースを開き
+                        "Shift+右クリック"&gt;"PowerShellウィンドウをここに開く"
+                    </p>
+                    <pre>java -jar target/HelloSpringBoot-1.0-SNAPSHOT.jar</pre>
+                    <p>
+                        を実行。
+                    </p>
+                    <img src="img/lunch_power_shell.jpg" alt="" srcset="">
+                    <p>
+                        後は指示通りです。
+                    </p>
+                </div>
+                <div>
+                    <h3>アプリを使用する</h3>
+                    <p>指示通りです。</p>
+                </div>
+            </article>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+        </div>
+    </div>
+</body>
+
+</html>
